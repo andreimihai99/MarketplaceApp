@@ -6,20 +6,19 @@ public class ActionClient {
         Scanner myOption = new Scanner(System.in);
         int option = 0;
 
-        System.out.print("Hello\n" +
+        System.out.print("Hello\n" +                                //getting action from user
                 "Please introduce your action\n" +
                 "1 -> add a product to product list\n" +
                 "2 -> delete a product from product list\n" +
-                "3 -> modify the price of a product\n" +
-                "4 -> modify the quantity of a product\n" +
-                "5 -> display the most expensive product\n" +
-                "6 -> display the cheapest product\n" +
-                "7 -> enter the marketplace\n" +
-                "8 -> show every product in the market\n" +
+                "3 -> modify the price and/or quantity of a product\n" +
+                "4 -> display the most expensive product\n" +
+                "5 -> display the cheapest product\n" +
+                "6 -> enter the marketplace\n" +
+                "7 -> show every product in the market\n" +
                 "What would you like to do: ");
 
         option = myOption.nextInt();
-        if (option > 10 || option < 1) {
+        if (option > 7 || option < 1) {
             System.out.println("Please provide a number between 1 and 10\n");
         }
         return option;
@@ -36,7 +35,7 @@ public class ActionClient {
         return cont;
     }
 
-    public int basketActions(){
+    public int basketActions(){                                 //getting action from user inside the market
         Scanner myOption = new Scanner(System.in);
         int option = 0;
 

@@ -12,7 +12,7 @@ public class DefaultClient implements Client{
             emptyBasket();
             int n = ac.getActions();
             if(n == 1){                                            //for some reason the switch case wasn't working properly, so I implemented the methods with multiple ifs
-                Scanner nameOption = new Scanner(System.in);
+                Scanner nameOption = new Scanner(System.in);        //add product to store file
                 System.out.println("Name of product: ");
                 String name = nameOption.nextLine();
 
@@ -27,7 +27,7 @@ public class DefaultClient implements Client{
                 addProduct(name, price, quantity);
 
             } else if(n == 2){
-                Scanner delNameOption = new Scanner(System.in);
+                Scanner delNameOption = new Scanner(System.in);         //deleting a product from the store file
                 System.out.println("Name of product to delete: ");
                 String nameDel = delNameOption.nextLine();
 
@@ -42,7 +42,7 @@ public class DefaultClient implements Client{
                 deleteProduct(nameDel, priceDel, quantityDel);
 
             } else if(n == 3){
-                Scanner replNameOption = new Scanner(System.in);
+                Scanner replNameOption = new Scanner(System.in);                    //modifying the price and/or quantity of a product
                 System.out.println("Name of product to modify price: ");
                 String nameRepl = replNameOption.nextLine();
 
@@ -58,20 +58,17 @@ public class DefaultClient implements Client{
                 modifyPrice(nameRepl, priceRepl, qRepl);
 
             } else if(n == 4){
-                modifyQuantity();
-
-            } else if(n == 5){
                 mostExpensiveProduct();
 
-            } else if(n == 6){
+            } else if(n == 5){
                 cheapestProduct();
 
-            } else if(n == 7){
+            } else if(n == 6){
                 do{
                     int b = ac.basketActions();
 
                     if(b == 1){
-                        Scanner addBasketNameOption = new Scanner(System.in);
+                        Scanner addBasketNameOption = new Scanner(System.in);                   //add a product to the basket
                         System.out.println("Name of the product: ");
                         String nameAddBasket = addBasketNameOption.nextLine();
 
@@ -82,7 +79,7 @@ public class DefaultClient implements Client{
                         addToBasket(nameAddBasket, quantityAddBasket);
 
                     } else if(b == 2){
-                        Scanner delBasketNameOption = new Scanner(System.in);
+                        Scanner delBasketNameOption = new Scanner(System.in);                       //delete a product from the basket
                         System.out.println("Name of the product you want to delete from basket: ");
                         String nameDelBasket = delBasketNameOption.nextLine();
 
@@ -100,10 +97,10 @@ public class DefaultClient implements Client{
 
                 }while(ac.moreBasketActions().equals("y"));
 
-            } else if(n == 8) {
+            } else if(n == 7) {
                 printProducts();
             }
-        }while(ac.moreActions().equals("y"));
+        }while(ac.moreActions().equals("y"));               //the do whiles continue until the user introduces "n"
     }
 
 
@@ -132,7 +129,7 @@ public class DefaultClient implements Client{
 
         String currentLine;
 
-        while((currentLine = reader.readLine()) != null) {
+        while((currentLine = reader.readLine()) != null) {              //the reader reads lines from the file, if the searched product is found, nothing happens
             String trimmedLine = currentLine.trim();
             if(trimmedLine.equals(delProduct)) continue;
             writer.write(currentLine + "\n");           //writing from the input file to the auxiliary file
@@ -140,7 +137,7 @@ public class DefaultClient implements Client{
 
         writer.close();
         reader.close();
-        inputFile.delete();
+        inputFile.delete();                                //deleting the original file and renaming the new file with original name
         tempFile.renameTo(inputFile);
     }
 
@@ -177,7 +174,7 @@ public class DefaultClient implements Client{
             while((line = br.readLine()) != null) {
                 products = line.split(splitBy);
                 if(products[0].equals(newProductName)) {
-                    oldName = products[0];
+                    oldName = products[0];                      //saving the product with the old price in variables
                     oldPrice = products[1];
                     oldQuantity = products[2];
                     newProductQuantity = products[2];
@@ -189,9 +186,9 @@ public class DefaultClient implements Client{
         } catch (IOException e) {
             e.printStackTrace();
         }
-        addProduct(newProductName, newPrice, newProductQuantity);
-        deleteProduct(oldName, oldPrice, oldQuantity);
-
+        addProduct(newProductName, newPrice, newProductQuantity);       //firstly, it should add the changed product to the store.txt file
+        deleteProduct(oldName, oldPrice, oldQuantity);                  //then, the product with the old price should get deleted
+                                                                        //not working properly though
     }
 
     @Override
