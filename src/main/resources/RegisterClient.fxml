@@ -8,7 +8,6 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-
 <AnchorPane prefHeight="442.0" prefWidth="314.0" style="-fx-background-color: #f4a460;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="RegisterClientController">
    <children>
       <TextField fx:id="usernameRegisterField" layoutX="40.0" layoutY="104.0" opacity="0.8" prefHeight="25.0" prefWidth="235.0" promptText="username" style="-fx-background-color: #ffdead;">
@@ -24,7 +23,7 @@
             <Cursor fx:constant="DEFAULT" />
          </cursor>
       </PasswordField>
-      <Label layoutX="33.0" layoutY="21.0" prefHeight="63.0" prefWidth="249.0" text="Register" textAlignment="CENTER">
+      <Label layoutX="33.0" layoutY="21.0" prefHeight="63.0" prefWidth="249.0" text="Register Client" textAlignment="CENTER">
          <font>
             <Font name="Segoe UI Light Italic" size="28.0" />
          </font>
@@ -40,6 +39,11 @@
          </font>
       </TextField>
       <Button fx:id="registerClientButton" layoutX="80.0" layoutY="343.0" mnemonicParsing="false" onAction="#registerClientAction" prefHeight="31.0" prefWidth="156.0" style="-fx-background-color: #ffdead;" text="Register">
+         <font>
+            <Font name="Segoe UI Light" size="15.0" />
+         </font>
+      </Button>
+      <Button fx:id="registerBackButton" layoutX="130.0" layoutY="388.0" mnemonicParsing="false" onAction="#registerBackAction" prefHeight="31.0" prefWidth="57.0" style="-fx-background-color: #ffdead;" text="Back">
          <font>
             <Font name="Segoe UI Light" size="15.0" />
          </font>
