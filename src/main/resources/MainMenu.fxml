@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="462.0" prefWidth="760.0" style="-fx-background-color: #f4a460;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="MainMenuController">
+   <children>
+      <Label layoutX="45.0" layoutY="40.0" text="Welcome to your online marketplace">
+         <font>
+            <Font name="Segoe UI Light Italic" size="23.0" />
+         </font>
+      </Label>
+      <Label layoutX="34.0" layoutY="188.0" text="Click here to register as Client ">
+         <font>
+            <Font name="Segoe UI Light" size="16.0" />
+         </font>
+      </Label>
+      <Label layoutX="36.0" layoutY="314.0" text="Or click here to enter the marketplace without registration">
+         <font>
+            <Font name="Segoe UI Light" size="16.0" />
+         </font>
+      </Label>
+      <Label layoutX="63.0" layoutY="96.0" text="All the new clients who register for an account &#10;get 15% OFF their first purchase!" textAlignment="CENTER" wrapText="true">
+         <font>
+            <Font name="Segoe UI Light" size="17.0" />
+         </font>
+      </Label>
+      <Pane layoutX="432.0" layoutY="34.0" prefHeight="386.0" prefWidth="294.0" style="-fx-background-color: #CD853F;">
+         <children>
+            <Label layoutX="23.0" layoutY="35.0" prefHeight="63.0" prefWidth="249.0" text="LOGIN&#10;if you already have an account" textAlignment="CENTER">
+               <font>
+                  <Font name="Segoe UI Light" size="19.0" />
+               </font>
+            </Label>
+            <TextField fx:id="loginUsernameField" layoutX="30.0" layoutY="139.0" opacity="0.79" prefHeight="25.0" prefWidth="235.0" promptText="username" style="-fx-background-color: #ffdead;">
+               <font>
+                  <Font name="Segoe UI Light" size="14.0" />
+               </font>
+            </TextField>
+            <PasswordField fx:id="loginPasswordField" layoutX="30.0" layoutY="205.0" opacity="0.78" prefHeight="25.0" prefWidth="235.0" promptText="password" style="-fx-background-color: #ffdead;">
+               <font>
+                  <Font name="Segoe UI Light" size="14.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="DEFAULT" />
+               </cursor>
+            </PasswordField>
+            <Button layoutX="79.0" layoutY="275.0" mnemonicParsing="false" onAction="#loginButtonAction" prefHeight="31.0" prefWidth="137.0" style="-fx-background-color: #ffdead;" text="Login">
+               <font>
+                  <Font name="Segoe UI Light" size="15.0" />
+               </font>
+            </Button>
+         </children>
+      </Pane>
+      <Button layoutX="254.0" layoutY="185.0" mnemonicParsing="false" onAction="#registerClientButtonAction" prefHeight="31.0" prefWidth="137.0" style="-fx-background-color: #ffdead;" text="Register Client">
+         <font>
+            <Font name="Segoe UI Light" size="15.0" />
+         </font>
+      </Button>
+      <Button layoutX="124.0" layoutY="368.0" mnemonicParsing="false" onAction="#goToMarketplaceButtonAction" prefHeight="52.0" prefWidth="188.0" style="-fx-background-color: #ffdead;" text="Go to Marketplace">
+         <font>
+            <Font name="Segoe UI Light" size="15.0" />
+         </font>
+      </Button>
+      <Button layoutX="36.0" layoutY="251.0" mnemonicParsing="false" onAction="#registerManagerButtonAction" prefHeight="31.0" prefWidth="137.0" style="-fx-background-color: #ffdead;" text="Register Manager">
+         <font>
+            <Font name="Segoe UI Light" size="15.0" />
+         </font>
+      </Button>
+      <Label layoutX="193.0" layoutY="254.0" text="Click here to register as Manager ">
+         <font>
+            <Font name="Segoe UI Light" size="16.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>
