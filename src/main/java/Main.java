@@ -13,7 +13,7 @@ public class Main extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception {
         FXMLLoader loader = new FXMLLoader();
-        String fxmlPath = "src/main/resources/MainMenu.fxml";
+        String fxmlPath = "src/main/resources/Scenes/MainMenu.fxml";
 
         FileInputStream fxmlStream = new FileInputStream(fxmlPath);
         Pane root = (Pane)loader.load(fxmlStream);

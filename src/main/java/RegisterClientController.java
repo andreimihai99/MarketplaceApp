@@ -14,7 +14,7 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 
-public class RegisterClientController {
+public class RegisterClientController extends Register{
 
     private final NavigatePages nav = new NavigatePages();
 
@@ -40,6 +40,7 @@ public class RegisterClientController {
         userInfo.put("fullname", fullnameRegisterField.getText());
         userInfo.put("email", emailRegisterField.getText());
         userInfo.put("password", passwordRegisterField.getText());
+        userInfo.put("role", "client");
 
 
         JSONParser jsonParser = new JSONParser();
@@ -66,28 +67,15 @@ public class RegisterClientController {
         }
     }
 
-    public int checkRegisterForm() {
-        int check = 1;
-        if(usernameRegisterField.getText().length() < 6)
-            check = 0;
-        if(fullnameRegisterField.getText().isEmpty())
-            check = 0;
-        if(passwordRegisterField.getText().length() < 6)
-            check = 0;
-        if(!emailRegisterField.getText().contains("@") || emailRegisterField.getText().isEmpty())
-            check = 0;
-        return check;
-    }
-
     @FXML
     void registerClientAction(ActionEvent event) throws IOException {
         Alert alert = new Alert(Alert.AlertType.NONE);
-        if(checkRegisterForm() == 1) {
+        if(checkRegisterForm(usernameRegisterField.getText(), fullnameRegisterField.getText(), passwordRegisterField.getText(), emailRegisterField.getText()) == 1) {
             addUserToDatabase();
             alert.setAlertType(Alert.AlertType.INFORMATION);
             alert.setContentText("Thank you for your registration!");
             alert.show();
-            nav.changeToPage(event, "src/main/resources/Marketplace.fxml");
+            nav.changeToPage(event, "src/main/resources/Scenes/MainMenu.fxml");
         } else {
             alert.setAlertType(Alert.AlertType.WARNING);
             alert.setContentText("The form is incomplete or incorrect!");
@@ -97,7 +85,7 @@ public class RegisterClientController {
 
     @FXML
     void registerBackAction(ActionEvent event) throws IOException {
-        nav.changeToPage(event, "src/main/resources/MainMenu.fxml");
+        nav.changeToPage(event, "src/main/resources/Scenes/MainMenu.fxml");
     }
 
 }
