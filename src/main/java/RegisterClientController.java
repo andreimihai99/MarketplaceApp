@@ -33,38 +33,22 @@ public class RegisterClientController extends Register{
     @FXML
     private Button registerClientButton;
 
+    private final DatabaseAction dbAct = new DatabaseAction();
+
+    private final String secretKey = "ssshhhhhhhhhhh!!!!";
+
     public void addUserToDatabase() {
         JSONObject userInfo = new JSONObject();
-        JSONObject userInfoFinal = new JSONObject();
+
         userInfo.put("username", usernameRegisterField.getText());
         userInfo.put("fullname", fullnameRegisterField.getText());
         userInfo.put("email", emailRegisterField.getText());
-        userInfo.put("password", passwordRegisterField.getText());
+        userInfo.put("password", encrypt(passwordRegisterField.getText(), secretKey));
         userInfo.put("role", "client");
+        userInfo.put("discount used", "0");
 
 
-        JSONParser jsonParser = new JSONParser();
-
-        try {
-            JSONObject jsonObject = (JSONObject) jsonParser.parse(new FileReader("src/main/resources/Database/Users.json"));
-            JSONArray userArray = (JSONArray) jsonObject.get("Users");
-
-            userArray.add(userInfo);
-            try {
-                FileWriter file = new FileWriter("src/main/resources/Database/Users.json");
-                userInfoFinal.put("Users", userArray);
-                file.write(userInfoFinal.toJSONString());
-                file.close();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-        } catch (ParseException e) {
-            e.printStackTrace();
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        dbAct.writeElementToDB(userInfo, "Users");
     }
 
     @FXML
@@ -73,7 +57,7 @@ public class RegisterClientController extends Register{
         if(checkRegisterForm(usernameRegisterField.getText(), fullnameRegisterField.getText(), passwordRegisterField.getText(), emailRegisterField.getText()) == 1) {
             addUserToDatabase();
             alert.setAlertType(Alert.AlertType.INFORMATION);
-            alert.setContentText("Thank you for your registration!");
+            alert.setContentText("Are you about your credentials? If yes, please login in order to enter the app.");
             alert.show();
             nav.changeToPage(event, "src/main/resources/Scenes/MainMenu.fxml");
         } else {

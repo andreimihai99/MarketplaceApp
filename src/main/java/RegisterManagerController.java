@@ -1,4 +1,5 @@
 import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
@@ -36,13 +37,16 @@ public class RegisterManagerController extends Register {
     @FXML
     private TextField keyRegisterField;
 
+    private final DatabaseAction dbAct = new DatabaseAction();
+    private final String secretKey = "ssshhhhhhhhhhh!!!!";
+
     @FXML
     void registerManagerAction(ActionEvent event) throws IOException {
         Alert alert = new Alert(Alert.AlertType.NONE);
         if(checkRegisterForm(usernameRegisterField.getText(), fullnameRegisterField.getText(), passwordRegisterField.getText(), emailRegisterField.getText()) == 1) {
             addManagerToDatabase();
-            alert.setAlertType(Alert.AlertType.INFORMATION);
-            alert.setContentText("Thank you for your registration!");
+            alert.setAlertType(Alert.AlertType.CONFIRMATION);
+            alert.setContentText("Are you about your credentials? If yes, please login in order to enter the app.");
             alert.show();
             nav.changeToPage(event, "src/main/resources/Scenes/MainMenu.fxml");
         } else {
@@ -59,36 +63,14 @@ public class RegisterManagerController extends Register {
 
     public void addManagerToDatabase() {
         JSONObject userInfo = new JSONObject();
-        JSONObject userInfoFinal = new JSONObject();
+
         userInfo.put("username", usernameRegisterField.getText());
         userInfo.put("fullname", fullnameRegisterField.getText());
         userInfo.put("email", emailRegisterField.getText());
-        userInfo.put("password", passwordRegisterField.getText());
+        userInfo.put("password", encrypt(passwordRegisterField.getText(), secretKey));
         userInfo.put("role", "manager");
 
-
-        JSONParser jsonParser = new JSONParser();
-
-        try {
-            JSONObject jsonObject = (JSONObject) jsonParser.parse(new FileReader("src/main/resources/Database/Users.json"));
-            JSONArray userArray = (JSONArray) jsonObject.get("Users");
-
-            userArray.add(userInfo);
-            try {
-                FileWriter file = new FileWriter("src/main/resources/Database/Users.json");
-                userInfoFinal.put("Users", userArray);
-                file.write(userInfoFinal.toJSONString());
-                file.close();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-        } catch (ParseException e) {
-            e.printStackTrace();
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        dbAct.writeElementToDB(userInfo, "Users");
     }
 
 }
