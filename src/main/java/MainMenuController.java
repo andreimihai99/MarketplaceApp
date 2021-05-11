@@ -27,7 +27,7 @@ public class MainMenuController extends Register {
         if(checkLoginForm(loginUsernameField.getText(), loginPasswordField.getText()) == 1) {
             if(checkUsernamePassword(loginUsernameField.getText(), loginPasswordField.getText()) == 1)              //if user is a client
                 nav.changeToPage(event, "src/main/resources/Scenes/MarketplaceMainClient.fxml");
-            else if(checkUsernamePassword(loginUsernameField.getText(), loginPasswordField.getText()) == 1)         //if user is a manager
+            else if(checkUsernamePassword(loginUsernameField.getText(), loginPasswordField.getText()) == 2)         //if user is a manager
                 nav.changeToPage(event, "src/main/resources/Scenes/MarketplaceMainManager.fxml");
             else {
                 alert.setAlertType(Alert.AlertType.WARNING);

@@ -55,5 +55,10 @@
             <Font name="Segoe UI Light" size="14.0" />
          </font>
       </Button>
+      <Button layoutX="383.0" layoutY="169.0" mnemonicParsing="false" onAction="#checkAvailabilityButtonAction" style="-fx-background-color: #ffdead;" text="Check if available">
+         <font>
+            <Font name="Segoe UI Light" size="13.0" />
+         </font>
+      </Button>
    </children>
 </AnchorPane>

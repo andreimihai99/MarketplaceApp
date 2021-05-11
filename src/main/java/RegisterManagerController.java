@@ -70,7 +70,7 @@ public class RegisterManagerController extends Register {
         userInfo.put("password", encrypt(passwordRegisterField.getText(), secretKey));
         userInfo.put("role", "manager");
 
-        dbAct.writeElementToDB(userInfo, "Users");
+        dbAct.writeElementToDB(userInfo, "Users", "src/main/resources/Database/Users.json");
     }
 
 }

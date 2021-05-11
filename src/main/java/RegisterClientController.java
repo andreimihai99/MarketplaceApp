@@ -48,7 +48,7 @@ public class RegisterClientController extends Register{
         userInfo.put("discount used", "0");
 
 
-        dbAct.writeElementToDB(userInfo, "Users");
+        dbAct.writeElementToDB(userInfo, "Users", "src/main/resources/Database/Users.json");
     }
 
     @FXML
